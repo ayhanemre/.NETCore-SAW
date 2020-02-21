@@ -24,6 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "rsp.api/1.0.0": {
         "dependencies": {
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.2",
+          "rsp.domain": "1.0.0",
           "rsp.repository": "1.0.0",
           "rsp.service": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",

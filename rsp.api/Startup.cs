@@ -27,12 +27,11 @@ namespace rsp.api
         public void ConfigureServices(IServiceCollection services)
         {
             #region Configuration
-            
+
             var connectionString = Configuration.GetConnectionString("reservationDb");
-            
+
             #endregion
-            
-            services.AddControllers();
+
             services.AddEntityFrameworkNpgsql()
             .AddDbContext<ReservationDbContext>(builder =>
             {
@@ -40,6 +39,11 @@ namespace rsp.api
             });
             services.AddInjectionForThyRepositories();
             services.AddInjectionForThyServices();
+
+            //services.AddCors();
+
+            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,9 +54,15 @@ namespace rsp.api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // app.UseCors(builder=>{
+            //     builder.WithOrigins("https://info.thyteknik.com")
+            //     .WithMethods("POST")
+            //     .WithHeaders("vendor").Build();
+            // });
 
             app.UseAuthorization();
 

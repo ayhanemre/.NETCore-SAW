@@ -33,12 +33,35 @@ public class ReservationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasPostgresExtension("uuid-ossp");
+
         modelBuilder.Entity<Reservation>()
         .HasOne(reservation => reservation.User)
         .WithMany(user => user.Reservations)
         .HasForeignKey(reservation => reservation.UserId)
         .HasConstraintName("FK_User_Reservation");
+        try
+        {
+            foreach (var mutableEntityType in modelBuilder.Model.GetEntityTypes())
+            {
+                modelBuilder.Entity(mutableEntityType.ClrType)
+                    .Property("Id")
+                    .HasDefaultValueSql("uuid_generate_v4()");
+
+                modelBuilder.Entity(mutableEntityType.ClrType)
+                    .Property("isActive")
+                    .HasDefaultValue(true);
+
+                modelBuilder.Entity(mutableEntityType.ClrType)
+                    .Property("isDeleted")
+                    .HasDefaultValue(false);
+            }
+
+        }
+        catch
+        {
+            //TODO: who is gonna find a beautiful solution?
+        }
+
     }
-
-
 }
