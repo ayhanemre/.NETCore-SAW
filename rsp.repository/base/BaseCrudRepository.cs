@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
-public abstract class BaseRepository<T, IdType> 
+public abstract class BaseRepository<T, IdType>  :IBaseRepository<T,IdType>
         where T : class, IEntity<IdType>
     {
         protected readonly ReservationDbContext currentDbcontext;
