@@ -2,6 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\rsp.repository\rsp.repository.csproj" />
+    <ProjectReference Include="..\rsp.service\rsp.service.csproj" />
+    <ProjectReference Include="..\rsp.domain\rsp.domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.2" />
   </ItemGroup>
 
   <PropertyGroup>

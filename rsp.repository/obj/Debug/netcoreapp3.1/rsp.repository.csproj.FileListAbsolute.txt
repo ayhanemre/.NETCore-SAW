@@ -1,0 +1,11 @@
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/bin/Debug/netcoreapp3.1/rsp.repository.deps.json
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/bin/Debug/netcoreapp3.1/rsp.repository.dll
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/bin/Debug/netcoreapp3.1/rsp.repository.pdb
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/bin/Debug/netcoreapp3.1/rsp.domain.dll
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/bin/Debug/netcoreapp3.1/rsp.domain.pdb
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.csprojAssemblyReference.cache
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.AssemblyInfoInputs.cache
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.AssemblyInfo.cs
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.csproj.CopyComplete
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.dll
+/home/mganitombalak/training/NETCore-SAW/rsp.repository/obj/Debug/netcoreapp3.1/rsp.repository.pdb

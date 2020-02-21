@@ -27,7 +27,12 @@ namespace rsp.api
         {
             
             services.AddControllers();
+            services.AddEntityFrameworkNpgsql().AddDbContext<AerotiveDbContext>(builder =>
+            {
+                builder.UseNpgsql(connectionString);
+            });
             services.AddInjectionForThyRepositories();
+            services.AddInjectionForThyServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
