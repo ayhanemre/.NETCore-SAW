@@ -1,29 +1,25 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 public abstract class BaseRepository<T, IdType> 
         where T : class, IEntity<IdType>
     {
-        protected readonly XXXXXXXXXXX currentDbcontext;
+        protected readonly ReservationDbContext currentDbcontext;
 
-        protected BaseRepository(XXXXXXXXXXXXXX dbContext)
+        protected BaseRepository(ReservationDbContext dbContext)
         {
             currentDbcontext = dbContext;
         }
 
-        public ICollection<T> find(Expression<Func<T, bool>> filter = null, DataPagingOptions pagingOptions = null,
-            params string[] includes)
+        public ICollection<T> find(Expression<Func<T, bool>> filter = null,params string[] includes)
         {
             IQueryable<T> queryable = currentDbcontext.Set<T>();
             if (includes.Any()) includes.ToList().ForEach(i => { queryable = queryable.Include(i); });
 
             if (filter != null) queryable = queryable.Where(filter);
-
-            if (pagingOptions != null && (pagingOptions.PageSize.HasValue ||
-                                          pagingOptions.PageSize.GetValueOrDefault() > 0 &&
-                                          pagingOptions.PageNumber.GetValueOrDefault() > 0))
-                queryable = queryable
-                    .Skip(pagingOptions.PageNumber.GetValueOrDefault() * pagingOptions.PageSize.GetValueOrDefault())
-                    .Take(pagingOptions.PageSize.GetValueOrDefault());
 
             return queryable.ToList();
         }
@@ -37,7 +33,6 @@ public abstract class BaseRepository<T, IdType>
         public T Create(T entity)
         {
             currentDbcontext.Set<T>().Add(entity);
-            entity.CreatedAt = ZonedDateTime.FromDateTimeOffset(DateTimeOffset.Now);
             currentDbcontext.SaveChanges();
             return entity;
         }
@@ -45,8 +40,6 @@ public abstract class BaseRepository<T, IdType>
         public virtual T Update(T entity)
         {
             currentDbcontext.Set<T>().Update(entity);
-            entity.UpdatedAt = ZonedDateTime.FromDateTimeOffset(DateTimeOffset.Now);
-            currentDbcontext.Entry(entity).Property(p => p.CreatedAt).IsModified = false;
             currentDbcontext.SaveChanges();
             return entity;
         }
@@ -54,8 +47,7 @@ public abstract class BaseRepository<T, IdType>
         public void UpdateStatusById(IdType id, bool status)
         {
             var entity = findById(id);
-            entity.IsActive = status;
-            entity.UpdatedAt = ZonedDateTime.FromDateTimeOffset(DateTimeOffset.Now);
+            entity.isActive = status;
             currentDbcontext.Set<T>().Update(entity);
             currentDbcontext.SaveChanges();
         }
@@ -63,7 +55,6 @@ public abstract class BaseRepository<T, IdType>
         public void Delete(T entity)
         {
             currentDbcontext.Set<T>().Remove(entity);
-            entity.DeletedAt = ZonedDateTime.FromDateTimeOffset(DateTimeOffset.Now);
             currentDbcontext.SaveChanges();
         }
 
@@ -76,24 +67,23 @@ public abstract class BaseRepository<T, IdType>
         public void SoftDelete(IdType Id)
         {
             var item = findById(Id);
-            item.IsDeleted = true;
-            item.DeletedAt = ZonedDateTime.FromDateTimeOffset(DateTimeOffset.Now);
+            item.isDeleted = true;
             currentDbcontext.Set<T>().Update(item);
             currentDbcontext.SaveChanges();
         }
 
         public bool Exist(IdType Id)
         {
-            return currentDbcontext.Set<T>().Any(e => e.Id.Equals(Id) && !e.IsDeleted);
+            return currentDbcontext.Set<T>().Any(e => e.Id.Equals(Id) && !e.isDeleted);
         }
 
         public bool Exist(Expression<Func<T,bool>> predicate)
         {
-            return currentDbcontext.Set<T>().Where(entity => !entity.IsDeleted).Any(predicate);
+            return currentDbcontext.Set<T>().Where(entity => !entity.isDeleted).Any(predicate);
         }
 
         public int GetTotalRecordCount()
         {
-            return currentDbcontext.Set<T>().Count(entity => !entity.IsDeleted);
+            return currentDbcontext.Set<T>().Count(entity => !entity.isDeleted);
         }
     }

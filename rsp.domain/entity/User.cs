@@ -8,4 +8,6 @@ public class User : IEntity<Guid>
     public Guid Id { get; set; }
     public bool isDeleted { get; set; }
     public ICollection<Reservation> Reservations{get;set;}
+
+    public bool isActive { get; set; }
 }

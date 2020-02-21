@@ -13,4 +13,5 @@ public class Reservation : IEntity<Guid>
     public DateTime EndDate { get; set; }
     public Guid Id { get; set; }
     public bool isDeleted { get; set; }
+    public bool isActive { get; set; }
 }

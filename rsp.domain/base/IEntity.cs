@@ -4,4 +4,6 @@ public interface IEntity<T>
 
     bool isDeleted{get;set;}
 
+    bool isActive{get;set;}
+
 }
