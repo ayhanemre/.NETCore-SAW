@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Design;
 public class ReservationDbContextFactory : IDesignTimeDbContextFactory<ReservationDbContext>
 {
     internal static string connectionString =
-        "Host=localhost;Database=reservation;Username=postgres;Password=P@ssw0rd";
+        "Host=localhost;Port=5433;Database=reservation;Username=postgres;Password=P@ssword";
     public ReservationDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ReservationDbContext>();

@@ -1,0 +1,10 @@
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/bin/Debug/netcoreapp3.1/rsp.domain.deps.json
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/bin/Debug/netcoreapp3.1/rsp.domain.runtimeconfig.json
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/bin/Debug/netcoreapp3.1/rsp.domain.runtimeconfig.dev.json
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/bin/Debug/netcoreapp3.1/rsp.domain.dll
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/bin/Debug/netcoreapp3.1/rsp.domain.pdb
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/obj/Debug/netcoreapp3.1/rsp.domain.csprojAssemblyReference.cache
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/obj/Debug/netcoreapp3.1/rsp.domain.AssemblyInfoInputs.cache
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/obj/Debug/netcoreapp3.1/rsp.domain.AssemblyInfo.cs
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/obj/Debug/netcoreapp3.1/rsp.domain.dll
+/home/mganitombalak/training/NETCore-SAW/rsp.domain/obj/Debug/netcoreapp3.1/rsp.domain.pdb
