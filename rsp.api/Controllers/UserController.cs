@@ -9,15 +9,19 @@ namespace rsp.api.Controllers
     [Route("/api/[controller]")]
     public class UserController : ControllerBase
     {
-        private IBaseService<User,Guid> service;
-        public UserController(IBaseService<User,Guid> pService)
+        private IBaseService<User, Guid> service;
+        public UserController(IBaseService<User, Guid> pService)
         {
             this.service = pService;
         }
 
         [HttpGet]
-        public ICollection<User> find(){
-            return this.service.find();
+        public RspBaseResponse<ICollection<User>> find()
+        {
+            var result = new RspBaseResponse<ICollection<User>>();
+            result.Host = Environment.MachineName;
+            result.Data= this.service.find();
+            return result;
         }
     }
 
